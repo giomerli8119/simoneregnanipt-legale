@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Pagina pubblica di Simone Regnani, personal trainer: i dati dell'attività come sul certificato della P.IVA. -->
+<title>Simone Regnani — Personal trainer a Sassuolo</title>
+<meta name="robots" content="index, follow">
+<style>
+/* ───────────────────────────────────────────────────────────────────────────
+   Pagina unica dello studio. Nessuna dipendenza esterna: i due caratteri sono
+   ospitati qui accanto (cartella fonts/), non chiamati da Google — su un sito
+   sanitario italiano il font remoto manderebbe l'IP di ogni visitatore a un
+   terzo, ed è esattamente il tipo di cosa che questo studio non fa.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: 'Newsreader';
+  src: url(fonts/newsreader-var.woff2) format('woff2');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Libre Franklin';
+  src: url(fonts/libre-franklin-var.woff2) format('woff2');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Carta, inchiostro, salvia. Tre superfici che si separano per luminosità
+     prima che per tinta: la pagina regge anche stampata in bianco e nero. */
+  --carta:        #f6f4ef;
+  --carta-alta:   #fffefb;
+  --inchiostro:   #1b211e;
+  --inchiostro-tenue: #515c56;   /* 7.1:1 sulla carta */
+  --salvia:       #2e4a3e;       /* 9.8:1 sulla carta */
+  --filo:         #d9d5cb;
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--carta);
+  color: var(--inchiostro);
+  font-family: 'Libre Franklin', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  font-feature-settings: 'kern' 1;
+  -webkit-font-smoothing: antialiased;
+  caret-color: var(--salvia);
+}
+
+::selection { background: var(--salvia); color: var(--carta-alta); }
+
+:focus-visible {
+  outline: 2px solid var(--salvia);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Anche la barra di scorrimento è parte della pagina: lasciata di sistema
+   sarebbe l'unico elemento che non appartiene a nessun disegno. */
+@supports (scrollbar-color: black white) {
+  html { scrollbar-color: #c3bfb3 var(--carta); scrollbar-width: thin; }
+}
+
+a {
+  color: var(--salvia);
+  text-decoration-thickness: 1px;
+  text-underline-offset: .22em;
+  text-decoration-color: #9db3a6;
+  transition: text-decoration-color .18s cubic-bezier(.16,1,.3,1);
+}
+a:hover { text-decoration-color: var(--salvia); }
+
+/* ── Impianto ────────────────────────────────────────────────────────────── */
+
+.foglio {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+@media (min-width: 48rem) {
+  .foglio { padding: 6rem 3rem 6rem; }
+}
+
+/* ── Apertura ────────────────────────────────────────────────────────────── */
+
+.logo {
+  display: block;
+  height: 3rem;
+  width: auto;
+  margin-bottom: 2.5rem;
+}
+
+.nome {
+  margin: 0;
+  font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  font-size: clamp(2.75rem, 9vw, 4.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+}
+
+.qualifica {
+  margin: 1.25rem 0 0;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: .01em;
+  color: var(--salvia);
+}
+
+.apertura {
+  margin: 2rem 0 0;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: clamp(1.25rem, 3.5vw, 1.5rem);
+  line-height: 1.5;
+  color: var(--inchiostro-tenue);
+  max-width: 30rem;
+  text-wrap: pretty;
+}
+
+/* L'unico momento animato della pagina: l'apertura si posa, una volta sola.
+   Lo stato di partenza dei keyframe non è lo stato di default — ad animazioni
+   spente il blocco è già visibile e al suo posto. */
+.entra { animation: posa .9s cubic-bezier(.16,1,.3,1) both; }
+.entra--2 { animation-delay: .1s; }
+.entra--3 { animation-delay: .18s; }
+@keyframes posa {
+  from { opacity: 0; transform: translateY(14px); filter: blur(8px); }
+  to   { opacity: 1; transform: none; filter: blur(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .entra { animation: none; }
+  a { transition: none; }
+}
+
+/* ── Sezioni ─────────────────────────────────────────────────────────────── */
+
+section { margin-top: 4.5rem; }
+@media (min-width: 48rem) { section { margin-top: 6rem; } }
+
+h2 {
+  margin: 0 0 2rem;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* I trattamenti sono un elenco, non delle schede: sono voci di pari rango
+   lette una dopo l'altra, e la scheda le trasformerebbe in prodotti. Il filo
+   orizzontale fa il lavoro che farebbe il bordo di una card, con un pixel. */
+.elenco { margin: 0; padding: 0; list-style: none; }
+.elenco > li {
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--filo);
+  display: grid;
+  gap: .25rem .5rem;
+}
+.elenco > li:last-child { border-bottom: 1px solid var(--filo); }
+@media (min-width: 40rem) {
+  .elenco > li { grid-template-columns: 13rem 1fr; gap: 1.5rem; }
+}
+.elenco dt, .voce-titolo {
+  font-weight: 600;
+  font-size: 1rem;
+}
+.voce-testo {
+  margin: 0;
+  color: var(--inchiostro-tenue);
+  max-width: 32rem;
+}
+
+/* ── Contatti ────────────────────────────────────────────────────────────── */
+
+.contatti {
+  margin: 0;
+  display: grid;
+  gap: 1.75rem;
+}
+@media (min-width: 40rem) {
+  .contatti { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.25rem; }
+}
+.contatto-etichetta {
+  margin: 0 0 .35rem;
+  font-size: .8125rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--inchiostro-tenue);
+}
+.contatto-valore {
+  margin: 0;
+  font-size: 1.125rem;
+  font-variant-numeric: tabular-nums;   /* le cifre di telefono e P.IVA in colonna */
+}
+.contatto-valore a { font-weight: 500; }
+
+/* Non è un recapito ma la nota che li accompagna: stesso posto nella griglia,
+   peso di testo corrente. */
+.contatto-nota {
+  margin: 0;
+  color: var(--inchiostro-tenue);
+  line-height: 1.55;
+}
+
+.riga-icona { display: flex; align-items: baseline; gap: .6rem; }
+.riga-icona svg {
+  flex: none;
+  width: 1.05rem;
+  height: 1.05rem;
+  stroke: var(--salvia);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transform: translateY(.15rem);
+}
+
+/* ── La targa ────────────────────────────────────────────────────────────── */
+/* È il blocco che la verifica di Meta legge davvero, ed è anche quello che in
+   una pagina qualsiasi finisce in grigio a 10px in fondo. Qui è disegnato:
+   una targa da studio, con dentro esattamente ciò che sta sul certificato. */
+
+.targa {
+  margin-top: 5rem;
+  padding: 2rem 1.75rem;
+  background: var(--salvia);
+  color: #eef1ec;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(27,33,30,.10), 0 12px 28px -12px rgba(27,33,30,.28);
+}
+@media (min-width: 48rem) {
+  .targa { padding: 2.75rem 2.5rem; }
+}
+.targa h2 {
+  margin: 0 0 1.75rem;
+  font-size: 1.125rem;
+  color: #ffffff;
+}
+.targa dl {
+  margin: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+@media (min-width: 40rem) {
+  .targa dl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem 2.5rem; }
+}
+.targa dt {
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  /* Tinto dal verde della targa, non grigio: su una superficie colorata il
+     grigio è un buco. 5.6:1 sul fondo. */
+  color: #a9c2b3;
+  margin-bottom: .3rem;
+}
+.targa dd {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.45;
+  font-variant-numeric: tabular-nums;
+}
+.targa a { color: #ffffff; text-decoration-color: #7f9c8b; }
+.targa a:hover { text-decoration-color: #ffffff; }
+
+.chiusura {
+  margin: 2.5rem 0 0;
+  font-size: .875rem;
+  color: var(--inchiostro-tenue);
+}
+
+/* Segnaposto ancora da riempire: giallo finché resta. */
+.riempi { background: #fff1a8; padding: 0 .2em; border-radius: 2px; }
+</style>
+</head>
+
+<body>
+<main class="foglio">
+
+  <header>
+    <h1 class="nome entra">Simone Regnani</h1>
+    <p class="qualifica entra entra--2">Personal trainer · Sassuolo</p>
+    <p class="apertura entra entra--3">
+      Allenamento personalizzato in palestra, con un programma costruito sui tuoi obiettivi e
+      progressi misurati nel tempo.
+    </p>
+  </header>
+
+  <section aria-labelledby="cosa-faccio">
+    <h2 id="cosa-faccio">Cosa faccio</h2>
+    <ul class="elenco">
+      <li>
+        <span class="voce-titolo">Lezioni individuali</span>
+        <p class="voce-testo">Allenamento uno a uno in palestra, seguito in ogni esercizio.</p>
+      </li>
+      <li>
+        <span class="voce-titolo">Programma di allenamento</span>
+        <p class="voce-testo">Una scheda a cicli, da seguire anche quando ti alleni da solo,
+          aggiornata a ogni fine ciclo.</p>
+      </li>
+      <li>
+        <span class="voce-titolo">Valutazione e progressi</span>
+        <p class="voce-testo">Un primo incontro per capire da dove parti, poi misurazioni
+          periodiche per vedere dove arrivi.</p>
+      </li>
+      <li>
+        <span class="voce-titolo">Pacchetti e abbonamenti</span>
+        <p class="voce-testo">Pacchetti di lezioni o abbonamenti a tempo, da concordare insieme.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="contatti">
+    <h2 id="contatti">Contatti</h2>
+    <div class="contatti">
+      <div>
+        <p class="contatto-etichetta">Telefono</p>
+        <p class="contatto-valore riga-icona">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4.5 3.5h3l1.5 4-2 1.5a12 12 0 006 6l1.5-2 4 1.5v3a2 2 0 01-2.2 2A16.5 16.5 0 013 5.7 2 2 0 014.5 3.5z"/>
+          </svg>
+          <a href="tel:+393466499305">+39 346 649 9305</a>
+        </p>
+      </div>
+      <div>
+        <p class="contatto-etichetta">Email</p>
+        <p class="contatto-valore riga-icona">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2"/>
+            <path d="M3.5 6.5l8.5 6 8.5-6"/>
+          </svg>
+          <a href="mailto:regnanisimone24@gmail.com">regnanisimone24@gmail.com</a>
+        </p>
+      </div>
+      <div>
+        <p class="contatto-etichetta">Su appuntamento</p>
+        <p class="contatto-nota">Le lezioni sono su appuntamento: scrivimi o chiamami e
+          fissiamo il primo incontro.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gli stessi dati, parola per parola, del certificato di attribuzione della P.IVA. -->
+  <section class="targa" aria-labelledby="dati-attivita">
+    <h2 id="dati-attivita">Dati dell'attività</h2>
+    <dl>
+      <div><dt>Denominazione</dt><dd>REGNANI SIMONE</dd></div>
+      <div><dt>Partita IVA</dt><dd>03062520352</dd></div>
+      <div><dt>Sede legale</dt><dd>VIA CANALE 119 SC B, 42013 CASALGRANDE (RE), Italia</dd></div>
+      <div><dt>Telefono</dt><dd><a href="tel:+393466499305">+39 346 649 9305</a></dd></div>
+      <div><dt>Email</dt><dd><a href="mailto:regnanisimone24@gmail.com">regnanisimone24@gmail.com</a></dd></div>
+    </dl>
+  </section>
+
+  <p class="chiusura">
+    © 2026 REGNANI SIMONE. Questo sito non usa cookie e non raccoglie dati dei visitatori.
+    <a href="privacy.html">Privacy</a> · <a href="condizioni.html">Condizioni d'uso</a> ·
+    <a href="eliminazione-dati.html">Eliminazione dei dati</a>
+  </p>
+
+</main>
+</body>
+</html>

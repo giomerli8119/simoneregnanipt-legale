@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Informativa privacy dei messaggi WhatsApp di Simone Regnani: è l'URL che Meta chiede per pubblicare l'app. -->
+<title>Informativa sulla privacy — Simone Regnani</title>
+<meta name="robots" content="index, follow">
+<style>
+/* ───────────────────────────────────────────────────────────────────────────
+   Foglio comune alle tre pagine legali (privacy, condizioni, eliminazione dati),
+   che Meta chiede per pubblicare l'app WhatsApp. Stessa carta, inchiostro e salvia
+   di index.html; stessi caratteri ospitati in fonts/, nessuna richiesta esterna.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: 'Newsreader';
+  src: url(fonts/newsreader-var.woff2) format('woff2');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Libre Franklin';
+  src: url(fonts/libre-franklin-var.woff2) format('woff2');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --carta:        #f6f4ef;
+  --carta-alta:   #fffefb;
+  --inchiostro:   #1b211e;
+  --inchiostro-tenue: #515c56;   /* 7.1:1 sulla carta */
+  --salvia:       #2e4a3e;       /* 9.8:1 sulla carta */
+  --filo:         #d9d5cb;
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--carta);
+  color: var(--inchiostro);
+  font-family: 'Libre Franklin', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--salvia); color: var(--carta-alta); }
+:focus-visible { outline: 2px solid var(--salvia); outline-offset: 3px; border-radius: 2px; }
+
+a {
+  color: var(--salvia);
+  text-decoration-thickness: 1px;
+  text-underline-offset: .22em;
+  text-decoration-color: #9db3a6;
+  overflow-wrap: anywhere;          /* gli indirizzi lunghi vanno a capo invece di sforare */
+}
+a:hover { text-decoration-color: var(--salvia); }
+
+.foglio {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+@media (min-width: 48rem) { .foglio { padding: 4.5rem 3rem 5rem; } }
+
+/* Il ritorno alla pagina dello studio: piccolo, in alto, come un'intestazione di carta. */
+.testata {
+  margin: 0 0 3rem;
+  font-size: .875rem;
+  font-weight: 500;
+  letter-spacing: .01em;
+}
+.testata a { text-decoration: none; }
+.testata a:hover { text-decoration: underline; }
+
+h1 {
+  margin: 0;
+  font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  font-size: clamp(2.1rem, 7vw, 3.1rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.sottotitolo {
+  margin: 1rem 0 0;
+  color: var(--inchiostro-tenue);
+  font-size: .9375rem;
+}
+
+.sommario {
+  margin: 1.75rem 0 0;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: clamp(1.15rem, 3vw, 1.3rem);
+  line-height: 1.55;
+  color: var(--inchiostro-tenue);
+  text-wrap: pretty;
+}
+
+section { margin-top: 3.25rem; }
+
+h2 {
+  margin: 0 0 1rem;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+p { margin: 0 0 1rem; max-width: 38rem; }
+ul, ol { margin: 0 0 1rem; padding-left: 1.25rem; max-width: 38rem; }
+li { margin-bottom: .5rem; }
+li::marker { color: var(--salvia); }
+strong { font-weight: 600; }
+
+/* Le voci "dato, perche', base giuridica": un elenco a filo, come i trattamenti
+   di index.html, non delle schede. */
+.voci { margin: 0; padding: 0; list-style: none; max-width: none; }
+.voci > li {
+  margin: 0;
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--filo);
+}
+.voci > li:last-child { border-bottom: 1px solid var(--filo); }
+.voce-titolo { display: block; font-weight: 600; margin-bottom: .25rem; }
+.voci p { margin: 0 0 .35rem; color: var(--inchiostro-tenue); }
+.voci p:last-child { margin-bottom: 0; }
+
+/* Il titolare: la stessa targa verde della pagina dello studio. */
+.targa {
+  margin-top: 1.25rem;
+  padding: 1.6rem 1.5rem;
+  background: var(--salvia);
+  color: #eef1ec;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(27,33,30,.10), 0 12px 28px -12px rgba(27,33,30,.28);
+}
+.targa dl { margin: 0; display: grid; gap: 1rem; }
+@media (min-width: 40rem) {
+  .targa dl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem 2rem; }
+}
+.targa dt {
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: #a9c2b3;                   /* 5.6:1 sul fondo */
+  margin-bottom: .2rem;
+}
+.targa dd { margin: 0; line-height: 1.45; font-variant-numeric: tabular-nums; }
+.targa a { color: #ffffff; text-decoration-color: #7f9c8b; }
+
+/* I passi numerati dell'eliminazione dati. */
+.passi { padding-left: 1.4rem; }
+.passi > li { padding-left: .25rem; margin-bottom: .85rem; }
+
+/* Segnaposto ancora da riempire: giallo finche' resta, come in index.html. */
+.riempi { background: #fff1a8; padding: 0 .2em; border-radius: 2px; }
+
+.chiusura {
+  margin: 4rem 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--filo);
+  font-size: .875rem;
+  color: var(--inchiostro-tenue);
+}
+.chiusura a { margin-right: 1rem; }
+</style>
+</head>
+
+<body>
+<main class="foglio">
+
+  <p class="testata"><a href="index.html">← Simone Regnani, personal trainer</a></p>
+
+  <header>
+    <h1>Informativa sulla privacy</h1>
+    <p class="sottotitolo">Messaggi WhatsApp sulle lezioni · aggiornata al 10 novembre 2026</p>
+    <p class="sommario">
+      Quali dati uso per mandarti i messaggi WhatsApp sulle tue lezioni, perché, con chi li
+      condivido e quali diritti hai. È scritta ai sensi degli articoli 13 e 14 del Regolamento
+      (UE) 2016/679, il GDPR.
+    </p>
+  </header>
+
+  <section aria-labelledby="titolare">
+    <h2 id="titolare">Chi è il titolare del trattamento</h2>
+    <div class="targa">
+      <dl>
+        <div><dt>Titolare</dt><dd>REGNANI SIMONE</dd></div>
+        <div><dt>Partita IVA</dt><dd>03062520352</dd></div>
+        <div><dt>Sede legale</dt><dd>VIA CANALE 119 SC B, 42013 CASALGRANDE (RE), Italia</dd></div>
+        <div><dt>Contatti</dt><dd><a href="mailto:regnanisimone24@gmail.com">regnanisimone24@gmail.com</a><br>
+          <a href="tel:+393466499305">+39 346 649 9305</a></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section aria-labelledby="dati">
+    <h2 id="dati">Quali dati uso</h2>
+    <ul class="voci">
+      <li>
+        <span class="voce-titolo">Nome e numero di telefono</span>
+        <p>Dalla tua scheda cliente: servono a mandarti il messaggio e a salutarti per nome.</p>
+      </li>
+      <li>
+        <span class="voce-titolo">Le tue lezioni</span>
+        <p>Data, ora e luogo della lezione, per l'avviso quando la fissiamo e per i promemoria.</p>
+      </li>
+      <li>
+        <span class="voce-titolo">La tua conferma</span>
+        <p>Se premi CONFERMA, registro che sarai presente e quando l'hai detto.</p>
+      </li>
+      <li>
+        <span class="voce-titolo">I messaggi che mi scrivi</span>
+        <p>Se scrivi al numero WhatsApp un messaggio che non è CONFERMA, non ricevi una risposta
+          automatica: il testo mi arriva come notifica nel mio gestionale, per poterti
+          rispondere io.</p>
+      </li>
+      <li>
+        <span class="voce-titolo">La richiesta di recensione</span>
+        <p>Il pulsante contiene un codice personale, e registro quando lo apri la prima volta:
+          serve a non chiederti di nuovo la recensione. Il pulsante porta alla pagina delle
+          recensioni di Google, che segue l'informativa di Google. Non ricevo il testo della tua
+          recensione.</p>
+      </li>
+      <li>
+        <span class="voce-titolo">Il registro degli invii</span>
+        <p>Quando ti è stato mandato ogni messaggio e, se non è partito, il motivo (per esempio:
+          nessun telefono nella scheda). Serve a non mandarti lo stesso messaggio due volte.</p>
+      </li>
+    </ul>
+    <p style="margin-top:1.25rem">
+      <strong>Nei messaggi non ci sono informazioni sulla tua salute</strong> né sul tuo
+      allenamento: solo il tuo nome, la data, l'ora e il luogo della lezione. Alla prima
+      prenotazione il messaggio può contenere un link al modulo di ingresso (check-in): si
+      compila su una pagina del mio gestionale, non su WhatsApp, e ha una sua informativa.
+    </p>
+  </section>
+
+  <section aria-labelledby="perche">
+    <h2 id="perche">Perché li uso, e su quale base</h2>
+    <ul class="voci">
+      <li>
+        <span class="voce-titolo">Avviso di prenotazione, promemoria e registrazione della conferma</span>
+        <p>Per organizzare le lezioni che hai concordato con me. Base giuridica: il servizio che
+          mi hai chiesto (art. 6, par. 1, lett. b GDPR).</p>
+        <p>Puoi chiedermi in qualsiasi momento di non ricevere i messaggi su WhatsApp.</p>
+      </li>
+      <li>
+        <span class="voce-titolo">Richiesta di recensione</span>
+        <p>Per sapere com'è andata e aiutare altre persone a scegliere. Base giuridica: il mio
+          legittimo interesse a raccogliere opinioni sul mio lavoro (art. 6, par. 1, lett. f
+          GDPR).</p>
+        <p>Lasciare la recensione è facoltativo. La richiesta arriva al massimo una volta ogni
+          7 giorni, e puoi opporti in qualsiasi momento (art. 21 GDPR): la disattivo sulla tua
+          scheda.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="automatici">
+    <h2 id="automatici">Messaggi automatici</h2>
+    <p>
+      I messaggi li manda in automatico il mio gestionale: l'avviso quando la lezione viene
+      fissata, i promemoria due giorni prima e il giorno prima, la richiesta di recensione
+      qualche ora dopo la lezione. Promemoria e recensioni partono solo fra le 8 e le 20. Il
+      sistema non prende decisioni che abbiano effetti giuridici o significativi su di te
+      (art. 22 GDPR): ricorda le lezioni, niente di più.
+    </p>
+  </section>
+
+  <section aria-labelledby="chi-riceve">
+    <h2 id="chi-riceve">Con chi li condivido</h2>
+    <p>
+      I tuoi dati non vengono venduti né usati per pubblicità. Li trattano, per mio conto e solo
+      per quanto serve al servizio, questi fornitori:
+    </p>
+    <ul class="voci">
+      <li>
+        <span class="voce-titolo">Meta Platforms Ireland Limited (WhatsApp Business)</span>
+        <p>Consegna i messaggi: riceve il tuo numero, il tuo nome e il contenuto dei messaggi
+          (data, ora e luogo della lezione). Meta può trasferire dati negli Stati Uniti, con le
+          garanzie previste dal GDPR (EU-U.S. Data Privacy Framework e clausole contrattuali
+          tipo). Per i dati che WhatsApp tratta per conto proprio vale
+          l'<a href="https://www.whatsapp.com/legal/privacy-policy-eea">informativa privacy di WhatsApp</a>.</p>
+      </li>
+      <li>
+        <span class="voce-titolo">Google Ireland Limited (Google Calendar)</span>
+        <p>Il mio calendario delle lezioni è su Google Calendar, con il nome del cliente e
+          l'orario. Anche Google può trasferire dati fuori dall'Unione Europea, con le garanzie
+          previste dal GDPR.</p>
+      </li>
+      <li>
+        <span class="voce-titolo">Hetzner Online GmbH</span>
+        <p>Ospita il server dedicato al mio gestionale, in un data center a <span class="riempi">⟨CITTÀ DEL DATA CENTER⟩</span> (UE). Lì stanno
+          le schede dei clienti, le lezioni e i registri del servizio.</p>
+      </li>
+      <li>
+        <span class="voce-titolo">Giorgio Merli, installatore tecnico</span>
+        <p>Sviluppatore e tecnico dei miei software aziendali: installa e mantiene il server e
+          il gestionale.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="tempi">
+    <h2 id="tempi">Per quanto tempo</h2>
+    <ul>
+      <li>
+        <strong>Nome, numero di telefono e lezioni</strong>: per tutto il tempo in cui ti alleni
+        con me, poi li elimino entro 30 giorni dalla fine del rapporto. Puoi chiederne prima la
+        cancellazione: vedi <a href="eliminazione-dati.html">Eliminazione dei dati</a>.
+      </li>
+      <li>
+        <strong>I messaggi che mi scrivi su WhatsApp</strong>: si cancellano dal gestionale dopo
+        <span class="riempi">30 giorni</span>.
+      </li>
+      <li>
+        <strong>Registro degli invii</strong>: si cancella da solo dopo 60 giorni.
+      </li>
+      <li>
+        <strong>Presso Meta</strong>: per il tempo necessario alla consegna, secondo le condizioni
+        di WhatsApp.
+      </li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="diritti">
+    <h2 id="diritti">I tuoi diritti</h2>
+    <p>
+      Puoi chiedermi di accedere ai tuoi dati, correggerli, cancellarli, limitarne l'uso,
+      opporti al trattamento o riceverli in un formato portabile (articoli da 15 a 21 del GDPR).
+      Basta scrivere a <a href="mailto:regnanisimone24@gmail.com">regnanisimone24@gmail.com</a> o chiamare il
+      <a href="tel:+393466499305">+39 346 649 9305</a>: rispondo entro un mese.
+    </p>
+    <p>
+      Se ritieni che i tuoi dati siano trattati in modo non corretto, puoi presentare reclamo al
+      <a href="https://www.garanteprivacy.it">Garante per la protezione dei dati personali</a>.
+    </p>
+    <p>
+      Per smettere di ricevere i messaggi guarda le <a href="condizioni.html">Condizioni d'uso</a>;
+      per la cancellazione, <a href="eliminazione-dati.html">Eliminazione dei dati</a>.
+    </p>
+  </section>
+
+  <section aria-labelledby="sito">
+    <h2 id="sito">Questa pagina</h2>
+    <p>Queste pagine non usano cookie, non hanno moduli e non raccolgono dati di chi le visita.</p>
+    <p>Se il servizio cambia, questa informativa viene aggiornata qui, con la data in cima.</p>
+  </section>
+
+  <p class="chiusura">
+    <a href="index.html">Simone Regnani</a>
+    <a href="condizioni.html">Condizioni d'uso</a>
+    <a href="eliminazione-dati.html">Eliminazione dei dati</a>
+  </p>
+
+</main>
+</body>
+</html>

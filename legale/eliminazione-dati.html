@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Istruzioni per chiedere l'eliminazione dei dati dei messaggi WhatsApp: è l'URL che Meta chiede per pubblicare l'app. -->
+<title>Eliminazione dei dati — Simone Regnani</title>
+<meta name="robots" content="index, follow">
+<style>
+/* ───────────────────────────────────────────────────────────────────────────
+   Foglio comune alle tre pagine legali (privacy, condizioni, eliminazione dati),
+   che Meta chiede per pubblicare l'app WhatsApp. Stessa carta, inchiostro e salvia
+   di index.html; stessi caratteri ospitati in fonts/, nessuna richiesta esterna.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: 'Newsreader';
+  src: url(fonts/newsreader-var.woff2) format('woff2');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Libre Franklin';
+  src: url(fonts/libre-franklin-var.woff2) format('woff2');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --carta:        #f6f4ef;
+  --carta-alta:   #fffefb;
+  --inchiostro:   #1b211e;
+  --inchiostro-tenue: #515c56;   /* 7.1:1 sulla carta */
+  --salvia:       #2e4a3e;       /* 9.8:1 sulla carta */
+  --filo:         #d9d5cb;
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--carta);
+  color: var(--inchiostro);
+  font-family: 'Libre Franklin', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--salvia); color: var(--carta-alta); }
+:focus-visible { outline: 2px solid var(--salvia); outline-offset: 3px; border-radius: 2px; }
+
+a {
+  color: var(--salvia);
+  text-decoration-thickness: 1px;
+  text-underline-offset: .22em;
+  text-decoration-color: #9db3a6;
+  overflow-wrap: anywhere;          /* gli indirizzi lunghi vanno a capo invece di sforare */
+}
+a:hover { text-decoration-color: var(--salvia); }
+
+.foglio {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+@media (min-width: 48rem) { .foglio { padding: 4.5rem 3rem 5rem; } }
+
+/* Il ritorno alla pagina dello studio: piccolo, in alto, come un'intestazione di carta. */
+.testata {
+  margin: 0 0 3rem;
+  font-size: .875rem;
+  font-weight: 500;
+  letter-spacing: .01em;
+}
+.testata a { text-decoration: none; }
+.testata a:hover { text-decoration: underline; }
+
+h1 {
+  margin: 0;
+  font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  font-size: clamp(2.1rem, 7vw, 3.1rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.sottotitolo {
+  margin: 1rem 0 0;
+  color: var(--inchiostro-tenue);
+  font-size: .9375rem;
+}
+
+.sommario {
+  margin: 1.75rem 0 0;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: clamp(1.15rem, 3vw, 1.3rem);
+  line-height: 1.55;
+  color: var(--inchiostro-tenue);
+  text-wrap: pretty;
+}
+
+section { margin-top: 3.25rem; }
+
+h2 {
+  margin: 0 0 1rem;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+p { margin: 0 0 1rem; max-width: 38rem; }
+ul, ol { margin: 0 0 1rem; padding-left: 1.25rem; max-width: 38rem; }
+li { margin-bottom: .5rem; }
+li::marker { color: var(--salvia); }
+strong { font-weight: 600; }
+
+/* Le voci "dato, perche', base giuridica": un elenco a filo, come i trattamenti
+   di index.html, non delle schede. */
+.voci { margin: 0; padding: 0; list-style: none; max-width: none; }
+.voci > li {
+  margin: 0;
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--filo);
+}
+.voci > li:last-child { border-bottom: 1px solid var(--filo); }
+.voce-titolo { display: block; font-weight: 600; margin-bottom: .25rem; }
+.voci p { margin: 0 0 .35rem; color: var(--inchiostro-tenue); }
+.voci p:last-child { margin-bottom: 0; }
+
+/* Il titolare: la stessa targa verde della pagina dello studio. */
+.targa {
+  margin-top: 1.25rem;
+  padding: 1.6rem 1.5rem;
+  background: var(--salvia);
+  color: #eef1ec;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(27,33,30,.10), 0 12px 28px -12px rgba(27,33,30,.28);
+}
+.targa dl { margin: 0; display: grid; gap: 1rem; }
+@media (min-width: 40rem) {
+  .targa dl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem 2rem; }
+}
+.targa dt {
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: #a9c2b3;                   /* 5.6:1 sul fondo */
+  margin-bottom: .2rem;
+}
+.targa dd { margin: 0; line-height: 1.45; font-variant-numeric: tabular-nums; }
+.targa a { color: #ffffff; text-decoration-color: #7f9c8b; }
+
+/* I passi numerati dell'eliminazione dati. */
+.passi { padding-left: 1.4rem; }
+.passi > li { padding-left: .25rem; margin-bottom: .85rem; }
+
+/* Segnaposto ancora da riempire: giallo finche' resta, come in index.html. */
+.riempi { background: #fff1a8; padding: 0 .2em; border-radius: 2px; }
+
+.chiusura {
+  margin: 4rem 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--filo);
+  font-size: .875rem;
+  color: var(--inchiostro-tenue);
+}
+.chiusura a { margin-right: 1rem; }
+</style>
+</head>
+
+<body>
+<main class="foglio">
+
+  <p class="testata"><a href="index.html">← Simone Regnani, personal trainer</a></p>
+
+  <header>
+    <h1>Come chiedere l'eliminazione dei tuoi dati</h1>
+    <p class="sottotitolo">Aggiornata al 10 novembre 2026</p>
+    <p class="sommario">
+      Puoi chiedermi in qualsiasi momento di cancellare i dati legati ai messaggi WhatsApp.
+      Ecco come, e cosa succede dopo.
+    </p>
+  </header>
+
+  <section aria-labelledby="come">
+    <h2 id="come">Come fare</h2>
+    <ol class="passi">
+      <li>
+        Scrivi a <a href="mailto:regnanisimone24@gmail.com?subject=Cancellazione%20dati%20WhatsApp">regnanisimone24@gmail.com</a>
+        con oggetto <strong>«Cancellazione dati WhatsApp»</strong>, indicando nome, cognome e il
+        numero di telefono su cui ricevi i messaggi. Puoi chiedermelo anche a voce o al
+        <a href="tel:+393466499305">+39 346 649 9305</a>.
+      </li>
+      <li>
+        Controllo che la richiesta arrivi davvero da te, per esempio richiamandoti al numero
+        indicato: serve a non cancellare, per errore o per scherzo, i dati di un'altra persona.
+      </li>
+      <li>
+        <strong>Entro un mese</strong> dalla richiesta ricevi la conferma di cosa è stato
+        cancellato, come prevede l'articolo 12 del GDPR.
+      </li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="cosa-cancellato">
+    <h2 id="cosa-cancellato">Cosa viene cancellato</h2>
+    <ul>
+      <li>il numero di telefono usato per i messaggi;</li>
+      <li>i messaggi che mi hai scritto su WhatsApp, salvati nel mio gestionale;</li>
+      <li>i dati del servizio di messaggi: quando ti sono stati mandati avvisi, promemoria e
+        richieste di recensione, e quando hai confermato o aperto il link della recensione.</li>
+    </ul>
+    <p>Da quel momento smetto di mandarti messaggi.</p>
+  </section>
+
+  <section aria-labelledby="cosa-resta">
+    <h2 id="cosa-resta">Cosa può restare, e perché</h2>
+    <ul>
+      <li>
+        <strong>I dati che devo conservare per legge</strong>, come i documenti fiscali delle
+        lezioni che hai pagato: restano per il tempo previsto dalla legge, e non vengono più
+        usati per mandarti messaggi.
+      </li>
+      <li>
+        <strong>La chat sul tuo telefono</strong>: la gestisci tu. Per toglierla, cancellala da
+        WhatsApp.
+      </li>
+      <li>
+        <strong>I dati che WhatsApp tratta per conto proprio</strong>, secondo
+        l'<a href="https://www.whatsapp.com/legal/privacy-policy-eea">informativa privacy di WhatsApp</a>.
+      </li>
+    </ul>
+    <p>
+      Questo servizio non usa l'accesso con Facebook e non riceve dati dal tuo account Facebook
+      o Instagram: non c'è niente da cancellare da quella parte.
+    </p>
+  </section>
+
+  <section aria-labelledby="altro">
+    <h2 id="altro">Se vuoi solo smettere di ricevere i messaggi</h2>
+    <p>
+      Non serve cancellare i dati: basta dirmelo, e disattivo i messaggi sulla tua scheda. Tutti
+      i dettagli sono nelle <a href="condizioni.html">Condizioni d'uso</a> e
+      nell'<a href="privacy.html">Informativa sulla privacy</a>.
+    </p>
+  </section>
+
+  <section aria-labelledby="titolare">
+    <h2 id="titolare">A chi rivolgersi</h2>
+    <div class="targa">
+      <dl>
+        <div><dt>Titolare del trattamento</dt><dd>REGNANI SIMONE</dd></div>
+        <div><dt>Partita IVA</dt><dd>03062520352</dd></div>
+        <div><dt>Sede legale</dt><dd>VIA CANALE 119 SC B, 42013 CASALGRANDE (RE), Italia</dd></div>
+        <div><dt>Contatti</dt><dd><a href="mailto:regnanisimone24@gmail.com">regnanisimone24@gmail.com</a><br>
+          <a href="tel:+393466499305">+39 346 649 9305</a></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <p class="chiusura">
+    <a href="index.html">Simone Regnani</a>
+    <a href="privacy.html">Informativa sulla privacy</a>
+    <a href="condizioni.html">Condizioni d'uso</a>
+  </p>
+
+</main>
+</body>
+</html>

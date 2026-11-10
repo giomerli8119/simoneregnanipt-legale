@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Condizioni d'uso dei messaggi WhatsApp di Simone Regnani: è l'URL che Meta chiede per pubblicare l'app. -->
+<title>Condizioni d'uso dei messaggi WhatsApp — Simone Regnani</title>
+<meta name="robots" content="index, follow">
+<style>
+/* ───────────────────────────────────────────────────────────────────────────
+   Foglio comune alle tre pagine legali (privacy, condizioni, eliminazione dati),
+   che Meta chiede per pubblicare l'app WhatsApp. Stessa carta, inchiostro e salvia
+   di index.html; stessi caratteri ospitati in fonts/, nessuna richiesta esterna.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: 'Newsreader';
+  src: url(fonts/newsreader-var.woff2) format('woff2');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Libre Franklin';
+  src: url(fonts/libre-franklin-var.woff2) format('woff2');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --carta:        #f6f4ef;
+  --carta-alta:   #fffefb;
+  --inchiostro:   #1b211e;
+  --inchiostro-tenue: #515c56;   /* 7.1:1 sulla carta */
+  --salvia:       #2e4a3e;       /* 9.8:1 sulla carta */
+  --filo:         #d9d5cb;
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--carta);
+  color: var(--inchiostro);
+  font-family: 'Libre Franklin', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--salvia); color: var(--carta-alta); }
+:focus-visible { outline: 2px solid var(--salvia); outline-offset: 3px; border-radius: 2px; }
+
+a {
+  color: var(--salvia);
+  text-decoration-thickness: 1px;
+  text-underline-offset: .22em;
+  text-decoration-color: #9db3a6;
+  overflow-wrap: anywhere;          /* gli indirizzi lunghi vanno a capo invece di sforare */
+}
+a:hover { text-decoration-color: var(--salvia); }
+
+.foglio {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+@media (min-width: 48rem) { .foglio { padding: 4.5rem 3rem 5rem; } }
+
+/* Il ritorno alla pagina dello studio: piccolo, in alto, come un'intestazione di carta. */
+.testata {
+  margin: 0 0 3rem;
+  font-size: .875rem;
+  font-weight: 500;
+  letter-spacing: .01em;
+}
+.testata a { text-decoration: none; }
+.testata a:hover { text-decoration: underline; }
+
+h1 {
+  margin: 0;
+  font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  font-size: clamp(2.1rem, 7vw, 3.1rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.sottotitolo {
+  margin: 1rem 0 0;
+  color: var(--inchiostro-tenue);
+  font-size: .9375rem;
+}
+
+.sommario {
+  margin: 1.75rem 0 0;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: clamp(1.15rem, 3vw, 1.3rem);
+  line-height: 1.55;
+  color: var(--inchiostro-tenue);
+  text-wrap: pretty;
+}
+
+section { margin-top: 3.25rem; }
+
+h2 {
+  margin: 0 0 1rem;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+p { margin: 0 0 1rem; max-width: 38rem; }
+ul, ol { margin: 0 0 1rem; padding-left: 1.25rem; max-width: 38rem; }
+li { margin-bottom: .5rem; }
+li::marker { color: var(--salvia); }
+strong { font-weight: 600; }
+
+/* Le voci "dato, perche', base giuridica": un elenco a filo, come i trattamenti
+   di index.html, non delle schede. */
+.voci { margin: 0; padding: 0; list-style: none; max-width: none; }
+.voci > li {
+  margin: 0;
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--filo);
+}
+.voci > li:last-child { border-bottom: 1px solid var(--filo); }
+.voce-titolo { display: block; font-weight: 600; margin-bottom: .25rem; }
+.voci p { margin: 0 0 .35rem; color: var(--inchiostro-tenue); }
+.voci p:last-child { margin-bottom: 0; }
+
+/* Il titolare: la stessa targa verde della pagina dello studio. */
+.targa {
+  margin-top: 1.25rem;
+  padding: 1.6rem 1.5rem;
+  background: var(--salvia);
+  color: #eef1ec;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(27,33,30,.10), 0 12px 28px -12px rgba(27,33,30,.28);
+}
+.targa dl { margin: 0; display: grid; gap: 1rem; }
+@media (min-width: 40rem) {
+  .targa dl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem 2rem; }
+}
+.targa dt {
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: #a9c2b3;                   /* 5.6:1 sul fondo */
+  margin-bottom: .2rem;
+}
+.targa dd { margin: 0; line-height: 1.45; font-variant-numeric: tabular-nums; }
+.targa a { color: #ffffff; text-decoration-color: #7f9c8b; }
+
+/* I passi numerati dell'eliminazione dati. */
+.passi { padding-left: 1.4rem; }
+.passi > li { padding-left: .25rem; margin-bottom: .85rem; }
+
+/* Segnaposto ancora da riempire: giallo finche' resta, come in index.html. */
+.riempi { background: #fff1a8; padding: 0 .2em; border-radius: 2px; }
+
+.chiusura {
+  margin: 4rem 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--filo);
+  font-size: .875rem;
+  color: var(--inchiostro-tenue);
+}
+.chiusura a { margin-right: 1rem; }
+</style>
+</head>
+
+<body>
+<main class="foglio">
+
+  <p class="testata"><a href="index.html">← Simone Regnani, personal trainer</a></p>
+
+  <header>
+    <h1>Condizioni d'uso dei messaggi WhatsApp</h1>
+    <p class="sottotitolo">Aggiornate al 10 novembre 2026</p>
+    <p class="sommario">
+      Uso WhatsApp per mandarti messaggi automatici sulle tue lezioni. Qui trovi cosa fa il
+      servizio, cosa non fa e come smettere di riceverlo.
+    </p>
+  </header>
+
+  <section aria-labelledby="cos-e">
+    <h2 id="cos-e">Cos'è il servizio</h2>
+    <p>
+      I messaggi partono dal mio numero WhatsApp Business, <strong><span class="riempi">⟨NUMERO WHATSAPP⟩</span></strong>, e li invia in
+      automatico il mio gestionale. Li ricevi solo se ti alleni con me e mi hai lasciato il tuo
+      numero di telefono. I messaggi sono di quattro tipi:
+    </p>
+    <ul>
+      <li>l'avviso che una lezione è stata fissata;</li>
+      <li>un promemoria <strong>due giorni prima</strong> della lezione, con il pulsante
+        <strong>CONFERMA</strong>;</li>
+      <li>un promemoria <strong>il giorno prima</strong>, se non hai ancora confermato;</li>
+      <li>dopo una lezione, la richiesta <strong>facoltativa</strong> di lasciare una recensione
+        pubblica.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="rispondere">
+    <h2 id="rispondere">Cosa puoi fare rispondendo</h2>
+    <p>
+      Premendo <strong>CONFERMA</strong>, o scrivendo la parola CONFERMA, registro che sarai
+      presente alla lezione.
+    </p>
+    <p>
+      Il sistema non capisce altre risposte: gli altri messaggi non ricevono una risposta
+      automatica, mi arrivano come notifica e li leggo appena posso, non in tempo reale.
+      <strong>Per spostare o disdire una lezione, o per qualsiasi domanda, contattami</strong>
+      al <a href="tel:+393466499305">+39 346 649 9305</a> o a <a href="mailto:regnanisimone24@gmail.com">regnanisimone24@gmail.com</a>.
+    </p>
+  </section>
+
+  <section aria-labelledby="non-e">
+    <h2 id="non-e">Cosa il servizio non è</h2>
+    <ul>
+      <li><strong>Non è un servizio di emergenza.</strong> In caso di urgenza chiama il 112.</li>
+      <li><strong>Non dà indicazioni sull'allenamento o sulla salute.</strong> I messaggi
+        riguardano solo le tue lezioni.</li>
+      <li><strong>Non è l'unico promemoria che conta.</strong> Un messaggio può arrivare in
+        ritardo o non arrivare (rete, WhatsApp, un guasto tecnico): fa sempre fede la lezione
+        concordata con me.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="costi">
+    <h2 id="costi">Costi</h2>
+    <p>
+      Il servizio è gratuito. Restano a tuo carico solo gli eventuali costi di connessione del
+      tuo operatore telefonico.
+    </p>
+  </section>
+
+  <section aria-labelledby="smettere">
+    <h2 id="smettere">Come smettere di ricevere i messaggi</h2>
+    <p>
+      Dimmelo, a voce, per telefono o per email: disattivo i messaggi sulla tua scheda. Puoi
+      anche bloccare il numero direttamente da WhatsApp. Smettere di ricevere i messaggi non
+      cambia niente nelle tue lezioni.
+    </p>
+    <p>
+      Se vuoi anche che i tuoi dati vengano cancellati, trovi come fare nella pagina
+      <a href="eliminazione-dati.html">Eliminazione dei dati</a>.
+    </p>
+  </section>
+
+  <section aria-labelledby="whatsapp">
+    <h2 id="whatsapp">WhatsApp e i tuoi dati</h2>
+    <p>
+      Il servizio passa da WhatsApp, che è di Meta: l'uso di WhatsApp resta regolato anche dalle
+      condizioni di WhatsApp. Come tratto i tuoi dati è spiegato
+      nell'<a href="privacy.html">Informativa sulla privacy</a>.
+    </p>
+  </section>
+
+  <section aria-labelledby="modifiche">
+    <h2 id="modifiche">Modifiche</h2>
+    <p>
+      Se il servizio cambia, queste condizioni vengono aggiornate su questa pagina, con la data
+      in cima. Sono regolate dalla legge italiana.
+    </p>
+  </section>
+
+  <section aria-labelledby="chi">
+    <h2 id="chi">Chi offre il servizio</h2>
+    <div class="targa">
+      <dl>
+        <div><dt>Denominazione</dt><dd>REGNANI SIMONE</dd></div>
+        <div><dt>Partita IVA</dt><dd>03062520352</dd></div>
+        <div><dt>Sede legale</dt><dd>VIA CANALE 119 SC B, 42013 CASALGRANDE (RE), Italia</dd></div>
+        <div><dt>Contatti</dt><dd><a href="mailto:regnanisimone24@gmail.com">regnanisimone24@gmail.com</a><br>
+          <a href="tel:+393466499305">+39 346 649 9305</a></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <p class="chiusura">
+    <a href="index.html">Simone Regnani</a>
+    <a href="privacy.html">Informativa sulla privacy</a>
+    <a href="eliminazione-dati.html">Eliminazione dei dati</a>
+  </p>
+
+</main>
+</body>
+</html>
